@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Start</title>
+    <link rel="icon" href="Logo.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="website-content">
+        <div class="navbar">
+            <a href="#" class="hover-this">
+                <span class="logo">HarshKumarDas</span>
+            </a>     
+        </div>
+        <div class="logo-box">
+            <div class="circular-text">
+                <span id="rotated">
+                    <p>Harsh   Kumar  Das   Harsh   Kumar   Das   Harsh   Kumar   Das</p>
+                </span>
+            </div>
+            <img src="Logo.png" alt="" class="img-logo">
+        </div>
+
+        <div class="site-header">
+            <div class="wrapper">
+
+                <svg id="svg" viewBox="0 0 1000 1000">
+                    <g id="left-eye">
+                        <circle class="eye-outer" 
+                        cx="400"
+                        cy="500"
+                        r="100"
+                        stroke="#0f0f0f"
+                        stroke-width="2"
+                        fill="#fff"/>
+                        <circle class="eye-inner" 
+                        cx="480"
+                        cy="500"
+                        r="20"
+                        fill="#0f0f0f"/>
+                    </g>
+                    <g id="right-eye">
+                        <circle class="eye-outer" 
+                        cx="600"
+                        cy="500"
+                        r="100"
+                        stroke
+                        ="#0f0f0f"
+                        stroke-width="2"
+                        fill="#fff"/>
+                        <circle class="eye-inner" 
+                        cx="680"
+                        cy="500"
+                        r="20"
+                        fill="#0f0f0f"/>
+                    </g>
+                </svg>
+                <div class="container">
+                    <div>
+                        <div class="text-link hover-this">Project</div>
+                    </div>
+                    <div>
+                        <div class="text-link hover-this">Mysterys</div>
+                        <div class="text-link hover-this" onclick="revealContact()">Contact</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="marquee">
+            <span>
+            Creative. Technology. Software. Analysis. Creative. Technology. Software. Analysis. Creative. Technology. Software. Analysis. Creative. Technology. Software. Analysis. Creative. Technology. Software. Analysis.
+            </span>
+        </div>
+
+        <section>
+            <img src="bar-chart.png" data-speed="10" class="layer img-1" alt="">
+            <img src="travel-bag.png" data-speed="10" class="layer img-2" alt="">
+        </section>
+    </div>
+
+    <div class="pre-loader" onclick="revealSite()">
+        <div class="ore-loader-container"  >
+            <div class="pre-loader-header">
+                <div class="header">
+                    <h1>The creator of</h1>
+                    <div class="header-wrapper"></div>
+                    &nbsp;&nbsp;
+                    <h1 data-text="Art" class="text-highlight-art">Art</h1>
+                </div>
+                <div class="header">
+                    <div class="header-wrapper"></div>
+                    <h1>From India's Corner</h1>
+                    <div class="header-wrapper"></div>
+                </div>
+                <div class="header">
+                    <h1>Learning and</h1>
+                    <div class="header-wrapper"></div>
+                    <h1 data-text="Creating" class="text-highlight-soul">Creating</h1>
+                    <div class="header-wrapper"></div>
+                </div>
+                <div class="header">
+                    <h1>work of other</h1>
+                    <div class="header-wrapper"></div>
+                </div>
+                <div class="header">
+                    <h1>artist's created</h1>
+                    <div class="header-wrapper"></div>
+                </div>
+                <div class="header">
+                    <h1 data-text="soul" class="text-highlight-soul">soul</h1>
+                    <div class="header-wrapper"></div>
+                </div>
+            </div>
+            <div class="pre-loader-btn">
+                <div class="btn">
+                    Click Anywhere
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68 10">
+                        <defs></defs>
+                        <path
+                        fill="#e2e2dd"
+                        d="M59.2,9.6V6.2h-58v-2c0,0,0,0,0,0h58V0.7L67,5.1L59.2,9.6z"></path>
+                    </svg>
+                    to Begin
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contact-web">
+        <div class="navbar-contact">
+            <a href="#" class="hover-this" onclick="revealWeb()">
+                <span class="logo">HarshKumarDas</span>
+            </a>   
+            <div class="branding">
+                <p>HKD</p>
+                <img src="Logo.png" alt="" class="contact-logo"/>
+                <p>2004</p>
+            </div>  
+        </div>
+        <div class="contact-marquee">
+            <span>
+                Contact Us / Contact Us / Contact Us / Contact Us / Contact Us / Contact Us / Contact Us / 
+            </span>
+        </div>
+        <div class="contact-section">
+            <div class="contact-details col">
+                <p>Social Media 
+                </p>
+                <div class="social-media items">
+                    <h3>Handles</h3>
+                    <span>GitHub - Linkedin</span>
+                </div>
+                <div class="contact-info">
+                    <div class="email item">
+                        <h3>Get in touch</h3>
+                        <span>harshkumardas24@gmail.com</span>
+                    </div> 
+                    <div class="address item">
+                        <h3>Location</h3>
+                        Imphal - INDIA
+                    </div>                   
+                </div>
+            </div>
+            <div class="contact-form col">
+                <form class="contact-wrapper" action="mail.php" method="post">
+                    <div class="contact-row">
+                        <input type="text" placeholder="Name" name="name" class="hover-this"/>
+                    </div>
+                    <div class="contact-row">
+                        <input type="email" placeholder="Email" name="email" class="hover-this"/>
+                    </div>
+                    <div class="contact-row">
+                        <textarea name="message" 
+                        id="message"
+                        rows="4" placeholder="Message" class="hover-this"></textarea>
+                    </div>
+                    <div class="submit contact-row">
+                        <button type="submit" class="hover-this">Submit
+                            <div class="send-icon">
+                                <ion-icon name="arrow-forward-sharp"></ion-icon>
+                                <ion-icon name="arrow-forward-sharp"></ion-icon>
+                                <ion-icon name="arrow-forward-sharp"></ion-icon>
+                            </div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/peterhry/CircleType@2.3.1/dist/circletype.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+<script src="main.js"></script>
+
+</html>
