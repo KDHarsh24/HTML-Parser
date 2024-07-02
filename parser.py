@@ -2,13 +2,13 @@ import urllib.request, urllib.parse, urllib.error
 
 
 class htmlNode:
-    def __init__(self, tagData, innerHTML, parent):
+    def __init__(self, tagData: object, innerHTML: str, parent: object):
         self.tagData = tagData
         self.innerHTML = innerHTML
         self.parent = parent
         self.childs = []
     def insertChild(self, childElement):
-        if len(self.tagData) > 0:
+        if len(self.tagData) > 0: # type: ignore
             self.childs.append(childElement)
 
 
@@ -77,10 +77,11 @@ def extractInfofromTag(line):
         return sentence
 
     
-    def checkTwoQuotes(taglist):
+    def checkTwoQuotes(taglist, i):
         valueAnswer = ""
         no = 0
-        for lines in taglist:
+        for j in range(i, len(taglist)):
+            lines = taglist[j]
             if no == 2:
                 break
             for i in range(len(lines)):
@@ -90,6 +91,7 @@ def extractInfofromTag(line):
                     valueAnswer += lines[i]
                 if no == 2:
                     break
+            
         return valueAnswer
 
 
@@ -102,7 +104,7 @@ def extractInfofromTag(line):
     allSpaceWords.pop(0)
     for i in range(len(allSpaceWords)): 
         if allSpaceWords[i] == "=":
-            tagData[allSpaceWords[i-1]] = checkTwoQuotes(allSpaceWords[i+1])
+            tagData[allSpaceWords[i-1]] = checkTwoQuotes(allSpaceWords, i+1)
 
     return tagData
 
@@ -155,10 +157,20 @@ def tagDefiners(allBlock):
 
     return head
 
-# htmlArray = readingFromLocal('C:/Users/Harsh/Desktop/HTML-Parser/h.html')
-htmlArray = liveHtmlCode('https://www.linkedin.com')
+
+def searchTagClass(className, htmlNode):
+    if 'class' in htmlNode.tagData.keys():
+        if htmlNode.tagData['class'] == className:
+            print(htmlNode.tagData, htmlNode.innerHTML)
+    for head in htmlNode.childs:
+        searchTagClass(className, head)
+    
+
+htmlArray = readingFromLocal('C:/Users/Harsh/Dropbox/HTML-Parser/p.html')
+# htmlArray = liveHtmlCode('https://www.linkedin.com')
 # print(htmlArray)
 allBlocks = identifyTags(htmlArray)
 # print(allBlocks)
 a = tagDefiners(allBlocks)
 printTree(a, 0)
+searchTagClass('cursor', a)
