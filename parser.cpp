@@ -50,7 +50,7 @@ void printTree(node * head, int n)
 {
     for (int i = 0; i < n; i++)
         cout<<"------>";
-    cout<<head->fetchTagData("tagname")<<"  "<<head->fetchinnerHTML()<<"\n";
+    cout<<head->fetchTagData("tagname")<<"\n";
     n++;
     for (auto node: head->childs)
         printTree(node, n);
@@ -85,7 +85,6 @@ vector<string> identifyTags(vector<string> htmlCode)
                 }
                 else
                 {
-                    if(!isspace(line[i]))
                     tagData += line[i];
                 }
             }
@@ -177,6 +176,7 @@ vector<string> getIntoList(string line)
 attribute extractInfofromTag(string line)
 {
     attribute tagData;
+    int i;
     if (line.length() == 0 || line[0] != '<')
         return tagData;
     
@@ -186,13 +186,15 @@ attribute extractInfofromTag(string line)
     vector<string> allSpaceWords = getIntoList(line);
     tagData["tagname"] = allSpaceWords[0];
     allSpaceWords.erase(allSpaceWords.begin());
-    for(int i = 0; i < allSpaceWords.size(); i++)
+    for(i = 0; i < allSpaceWords.size(); i++)
     {
         if (allSpaceWords[i] == "=")
         {
             tagData[allSpaceWords[i-1]] = checkTwoQuotes(allSpaceWords, i+1);
         }
     }
+    if (allSpaceWords[i-1] == "/")
+        tagData["selfClosing"] = "True";
     return tagData;
 }
 
@@ -206,95 +208,88 @@ bool searchNode(vector<string> list, string n)
 
 vector<node *> tagDefiners(vector<string> allBlock)
 {
-    vector<node *> onGoingBerth;
-    node * head = NULL;
-    onGoingBerth.push_back(head);
-    bool scriptrun = false;
-    vector<string> selfClosingTags = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr", "!DOCTYPE", "circle", "!--"};
-    allBlock.erase(allBlock.begin());
-    for (auto items: allBlock)
+  vector<node *> onGoingBerth;
+  attribute headTagInfo = extractInfofromTag("<htmlStartTag>");
+  node * head = new node(headTagInfo, "", NULL);
+  onGoingBerth.push_back(head);
+  bool scriptrun = false;
+  vector<string> selfClosingTags = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr", "!DOCTYPE", "circle", "!--"};
+  for (auto items: allBlock)
+  {
+    attribute tagElement = extractInfofromTag(items);
+    if (tagElement.size() == 0)
     {
-        attribute tagElement = extractInfofromTag(items);
-        if (tagElement.size() == 0)
-        {
-            if(onGoingBerth.back() != NULL)
-                onGoingBerth.back()->putinnerHTML(items);
-        }
-        else
-        {
-            if (onGoingBerth.back() != NULL)
-            {
-                if (tagElement["tagname"] == "/"+onGoingBerth.back()->fetchTagData("tagname"))
-                {
-                    scriptrun = false;
+      onGoingBerth.back()->putinnerHTML(items);
+    }
+    else
+		{
+            cout<<tagElement["tagname"]<<endl;
+			if(tagElement["tagname"][0] == '/')
+			{
+				if (tagElement["tagname"] == "/"+onGoingBerth.back()->fetchTagData("tagname"))
+				{
                     head = onGoingBerth.back();
                     onGoingBerth.pop_back();
-                    if (onGoingBerth.back() != NULL)
-                    {
-                        head->putParent(onGoingBerth.back());
-                        onGoingBerth.back()->insertChild(head);
-                    }
-                    else
-                        head->putParent(NULL);
-                }
-                else
-                {
-                    if (tagElement["tagname"][0] == '/' && !scriptrun)
-                    {
-                        head = onGoingBerth.back();
-                        onGoingBerth.pop_back();
-                        if (onGoingBerth.back() != NULL)
+                    head->putParent(onGoingBerth.back());
+                    onGoingBerth.back()->insertChild(head);
+                    if (tagElement["tagname"] == "/script")
+                        scriptrun = false;
+				}
+                else if (!scriptrun){
+                    cout<<tagElement["tagname"]<<endl;
+                    tagElement["Error"] = "True";
+                    while(onGoingBerth.back()->fetchTagData("tagname") != "htmlStartTag " && tagElement["tagname"] != "/"+onGoingBerth.back()->fetchTagData("tagname"))
                         {
+                            head = onGoingBerth.back();
+                            onGoingBerth.pop_back();
+                            head->putParent(onGoingBerth.back());
                             onGoingBerth.back()->insertChild(head);
                         }
-                        head->putTagdata("Error", "true");
-                    }
-                    else{
-                        node nd(tagElement, "", onGoingBerth.back());
-                        if (!searchNode(selfClosingTags, tagElement["tagname"]))
+                        if (onGoingBerth.back()->fetchTagData("tagname") != "htmlStartTag")
                         {
-                            onGoingBerth.push_back(&nd);
+                            head = onGoingBerth.back();
+                            onGoingBerth.pop_back();
+                            head->putParent(onGoingBerth.back());
+                            onGoingBerth.back()->insertChild(head);
                         }
-                        else{
-                            if(tagElement["tagname"] != "!--" and scriptrun == false)
-                            {
-                                nd.putParent(onGoingBerth.back());
-                                onGoingBerth.back()->insertChild(&nd);
-                            }
-                        }
-                        if (tagElement["tagname"] == "script")
-                        {
-                            scriptrun = true;
-                        }
-                    }
                 }
+			}
+        else{
+            node * nd = new node(tagElement, "", onGoingBerth.back());
+            if(!searchNode(selfClosingTags, tagElement["tagname"]))
+            {
+                if(tagElement["tagname"] == "script")
+                {
+                    scriptrun = true;
+                }
+                onGoingBerth.push_back(nd);
             }
             else{
-                node nd(tagElement, "", onGoingBerth.back());
-                if(!searchNode(selfClosingTags, tagElement["tagname"]))
+                if(tagElement["tagname"] != "!--")
                 {
-                    if(tagElement["tagname"] == "script")
-                    {
-                        scriptrun = true;
-                    }
-                    onGoingBerth.push_back(&nd);
-                }
-                else{
-                    if(tagElement["tagname"] != "!--")
-                        nd.putParent(onGoingBerth.back());
+                    nd->putParent(onGoingBerth.back());
+                    onGoingBerth.back()->insertChild(nd);
                 }
             }
         }
-    }
-    return onGoingBerth;
+	}
+  }
+  return onGoingBerth;
 }
 
-// int main()
-// {
-//     attribute a = extractInfofromTag("<div class=\"cursor\" style=\"color: red; z-index: 3\" ");
-//     for (auto k: a)
-//     {
-//         cout<<k.first<<" : "<<k.second<<endl;
-//     }
-//     return 0;
-// }
+int main()
+{
+    // ifstream f("a.html");
+    // string myText;
+    // vector<string> s;
+    // while (getline (f, myText))
+    //     s.push_back(myText);
+    // f.close();
+    // vector<string> allBlocks = identifyTags(s);
+    // vector <node *> htmlNode = tagDefiners(allBlocks);
+    // printTree(htmlNode[0], 0);
+    attribute a = extractInfofromTag("<svg color=\"{red: yellow}\"/>");
+    for (auto i: a)
+        cout<<i.first<<" : "<<i.second<<endl;
+    return 0;
+}
