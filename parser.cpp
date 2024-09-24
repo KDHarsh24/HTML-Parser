@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <regex>
 using namespace std;
 #define attribute map<string, string> 
 
@@ -9,7 +10,7 @@ class node
         string innerHTML = "";
         node * parent;
     public:
-        vector <node *> childs;
+        vector <node *> childs = {};
         node(attribute data, string value, node * prev = NULL)
         {
             innerHTML = value;
@@ -46,16 +47,34 @@ class node
         }
 };
 
+//*Remove printing htmlStartTag, but not needed to do*
 void printTree(node * head, int n)
-{
+{/*****Print Tree Function*****/
     for (int i = 0; i < n; i++)
         cout<<"------>";
     cout<<head->fetchTagData("tagname")<<"\n";
     n++;
-    for (auto node: head->childs)
-        printTree(node, n);
+    if (head->childs.size() > 0)
+        for (auto node: head->childs)
+            printTree(node, n);
 }
 
+//********* No Comment Parsing Needed ***
+string removeComments(const string& html) {
+    string result;
+    bool inComment = false;
+    for (size_t i = 0; i < html.size(); ++i) {
+        if (html[i] == '<' && html[i + 1] == '!' && html[i + 2] == '-' && html[i + 3] == '-' && !inComment) inComment = true;
+        else if (html[i] == '-' && html[i + 1] == '-' && html[i + 2] == '>' && inComment) {
+            inComment = false;
+            i += 2;
+        }
+        else if (!inComment) result += html[i]; 
+    }
+    return result;
+}
+
+/*** Distinguish Tags from InnerHTMLs  ***/
 vector<string> identifyTags(vector<string> htmlCode)
 {
     string tagData = "";
@@ -96,6 +115,7 @@ vector<string> identifyTags(vector<string> htmlCode)
 
 string replacewith(string input, string replace_word, string replace_by)
 {
+    /***** A substring replace from a string to another used extractInfoFromTag ******/
     size_t pos = input.find(replace_word); 
     while (pos != string::npos) { 
         input.replace(pos, replace_word.size(), replace_by); 
@@ -107,6 +127,7 @@ string replacewith(string input, string replace_word, string replace_by)
 
 string addspaceonEqual(string sentence)
 {
+    /*** Seperating for tags with =, > !-- intendation ***/
     sentence = replacewith(sentence, "=", " = ");
     sentence = replacewith(sentence, ">", " ");
     sentence = replacewith(sentence, "!--", "!-- ");
@@ -115,6 +136,7 @@ string addspaceonEqual(string sentence)
 
 string checkTwoQuotes(vector<string> taglist, int n)
 {
+    /*** All Things inside Quotes as one token ***/
     string valueAnswer = "";
     int no = 0;
     for (int i = n; i < taglist.size(); i++)
@@ -133,7 +155,9 @@ string checkTwoQuotes(vector<string> taglist, int n)
     return valueAnswer;
 }
 
-void ltrim(string &s) {
+void ltrim(string &s) 
+{
+    /*** Space removal from leftside ***/
     s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char ch) {
         return !std::isspace(ch);
     }));
@@ -141,6 +165,7 @@ void ltrim(string &s) {
 
 vector<string> getIntoList(string line)
 {
+    /*** Inside tag Divide everything into different elements/tokens ***/
     vector<string> list;
     string p = "";
     bool qu = false;
@@ -175,6 +200,7 @@ vector<string> getIntoList(string line)
 
 attribute extractInfofromTag(string line)
 {
+    /*** All info about a tag ***/
     attribute tagData;
     int i;
     if (line.length() == 0 || line[0] != '<')
@@ -200,12 +226,14 @@ attribute extractInfofromTag(string line)
 
 bool searchNode(vector<string> list, string n)
 {
+    /*** function that search if something in a string list present/absent ***/
     for(auto nodes: list)
         if(nodes == n)
             return true;
     return false;
 }
 
+//*****************Self Closing tag work left with auto detection and list search working to both*********************
 vector<node *> tagDefiners(vector<string> allBlock)
 {
   vector<node *> onGoingBerth;
@@ -253,6 +281,8 @@ vector<node *> tagDefiners(vector<string> allBlock)
                             onGoingBerth.back()->insertChild(head);
                         }
                 }
+                else
+                    onGoingBerth.back()->putinnerHTML(items);
 			}
         else{
             node * nd = new node(tagElement, "", onGoingBerth.back());
@@ -265,7 +295,7 @@ vector<node *> tagDefiners(vector<string> allBlock)
                 onGoingBerth.push_back(nd);
             }
             else{
-                if(tagElement["tagname"] != "!--")
+                if(tagElement["tagname"][0] != '!')
                 {
                     nd->putParent(onGoingBerth.back());
                     onGoingBerth.back()->insertChild(nd);
@@ -277,19 +307,19 @@ vector<node *> tagDefiners(vector<string> allBlock)
   return onGoingBerth;
 }
 
-int main()
-{
-    // ifstream f("a.html");
-    // string myText;
-    // vector<string> s;
-    // while (getline (f, myText))
-    //     s.push_back(myText);
-    // f.close();
-    // vector<string> allBlocks = identifyTags(s);
-    // vector <node *> htmlNode = tagDefiners(allBlocks);
-    // printTree(htmlNode[0], 0);
-    attribute a = extractInfofromTag("<svg color=\"{red: yellow}\"/>");
-    for (auto i: a)
-        cout<<i.first<<" : "<<i.second<<endl;
-    return 0;
-}
+// int main()
+// {
+//     // ifstream f("a.html");
+//     // string myText;
+//     // vector<string> s;
+//     // while (getline (f, myText))
+//     //     s.push_back(myText);
+//     // f.close();
+//     // vector<string> allBlocks = identifyTags(s);
+//     // vector <node *> htmlNode = tagDefiners(allBlocks);
+//     // printTree(htmlNode[0], 0);
+//     attribute a = extractInfofromTag("<svg color=\"{red: yellow}\"/>");
+//     for (auto i: a)
+//         cout<<i.first<<" : "<<i.second<<endl;
+//     return 0;
+// }

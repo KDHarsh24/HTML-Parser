@@ -1,4 +1,9 @@
 {
     "python.analysis.typeCheckingMode": "basic",
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "files.associations": {
+        "*.html": "html",
+        "*.css": "css",
+        "ostream": "cpp"
+    }
 }
