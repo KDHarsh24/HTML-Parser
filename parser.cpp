@@ -47,20 +47,38 @@ class node
         }
 };
 
-//*Remove printing htmlStartTag, but not needed to do*
-void printTree(node * head, int n)
-{/*****Print Tree Function*****/
-    for (int i = 0; i < n; i++)
-        cout<<"------>";
-    cout<<head->fetchTagData("tagname")<<"\n";
-    n++;
-    if (head->childs.size() > 0)
-        for (auto node: head->childs)
-            printTree(node, n);
+node * searchInTree(string query, bool attr, node * head)
+{
+    if (attr)
+    {
+        for
+    }
 }
 
-//********* No Comment Parsing Needed ***
+//*Remove printing htmlStartTag, but not needed to do*
+void printTree(node * head, string prefix = "", bool isLast = true) {
+        // Print the current node
+        if (head->fetchTagData("tagname") != "htmlStartTag"){
+            cout << prefix;
+            // Print connectors and node data
+            if (isLast) {
+                cout << "└─"; // This is the last child
+                prefix += "  "; // Adjust the prefix for the next level
+            } else {
+                cout << "├─"; // Intermediate child
+                prefix += "│ "; // Adjust the prefix for the next level
+            }
+            // Print the node's data
+            cout << head->fetchTagData("tagname") << endl;
+        }
+        // Recursively print all child nodes
+        for (size_t i = 0; i < head->childs.size(); ++i) {
+            printTree(head->childs[i], prefix, i == head->childs.size() - 1);
+        }
+    }
+
 string removeComments(const string& html) {
+    /**** Remove comment from a string ****/
     string result;
     bool inComment = false;
     for (size_t i = 0; i < html.size(); ++i) {
@@ -74,9 +92,9 @@ string removeComments(const string& html) {
     return result;
 }
 
-/*** Distinguish Tags from InnerHTMLs  ***/
 vector<string> identifyTags(vector<string> htmlCode)
 {
+    /*** Distinguish Tags from InnerHTMLs  ***/
     string tagData = "";
     vector<string> blockHtml;
     bool startTag = false;
@@ -92,6 +110,13 @@ vector<string> identifyTags(vector<string> htmlCode)
                     startTag = false;
                     blockHtml.push_back(tagData);
                     tagData = "";
+                }
+                else if(line[i] == '<')
+                {
+                    startTag = true;
+                    tagData.pop_back();
+                    blockHtml.push_back(tagData);
+                    tagData = "<";
                 }
             }
             else
@@ -155,7 +180,7 @@ string checkTwoQuotes(vector<string> taglist, int n)
     return valueAnswer;
 }
 
-void ltrim(string &s) 
+void leftTrim(string &s) 
 {
     /*** Space removal from leftside ***/
     s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char ch) {
@@ -195,31 +220,43 @@ vector<string> getIntoList(string line)
             }
         }
     }
+    if (p.length()!=0)
+        list.push_back(p);
     return list;
 }
 
 attribute extractInfofromTag(string line)
 {
-    /*** All info about a tag ***/
+    /*** Collects all info inside a tag ***/
     attribute tagData;
     int i;
     if (line.length() == 0 || line[0] != '<')
         return tagData;
     
     line = line.substr(1);
-    ltrim(line);
+    leftTrim(line);
     line = addspaceonEqual(line);
+    
     vector<string> allSpaceWords = getIntoList(line);
+    
     tagData["tagname"] = allSpaceWords[0];
+    //cout<<"*******"<<line<<endl;
+    
     allSpaceWords.erase(allSpaceWords.begin());
+    
     for(i = 0; i < allSpaceWords.size(); i++)
     {
+        attribute a;
         if (allSpaceWords[i] == "=")
         {
+            if (allSpaceWords[i+1][0] != '"')
+            {
+                return a;
+            }
             tagData[allSpaceWords[i-1]] = checkTwoQuotes(allSpaceWords, i+1);
         }
     }
-    if (allSpaceWords[i-1] == "/")
+    if (allSpaceWords[i] == "/")
         tagData["selfClosing"] = "True";
     return tagData;
 }
@@ -233,93 +270,84 @@ bool searchNode(vector<string> list, string n)
     return false;
 }
 
-//*****************Self Closing tag work left with auto detection and list search working to both*********************
-vector<node *> tagDefiners(vector<string> allBlock)
+//Main Parsing function and Parsetree genrator
+//******************* Error Solving issue still exist ***********************/
+node * htmlParser(vector<string> allBlock)
 {
-  vector<node *> onGoingBerth;
-  attribute headTagInfo = extractInfofromTag("<htmlStartTag>");
-  node * head = new node(headTagInfo, "", NULL);
-  onGoingBerth.push_back(head);
-  bool scriptrun = false;
-  vector<string> selfClosingTags = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr", "!DOCTYPE", "circle", "!--"};
-  for (auto items: allBlock)
-  {
-    attribute tagElement = extractInfofromTag(items);
-    if (tagElement.size() == 0)
-    {
-      onGoingBerth.back()->putinnerHTML(items);
-    }
-    else
-		{
-            cout<<tagElement["tagname"]<<endl;
-			if(tagElement["tagname"][0] == '/')
+	vector<node *> onGoingBerth;
+	attribute headTagInfo = extractInfofromTag("<htmlStartTag>");
+	node * headTag = new node(headTagInfo, "", NULL);
+	onGoingBerth.push_back(headTag);
+	bool scriptrun = false;
+	int i = 0;
+	vector<string> selfClosingTags = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr", "!DOCTYPE", "circle", "!--", "!doctype"};
+	for (auto items: allBlock)
+	{
+		//cout<<items<<endl;
+		attribute tagElement = extractInfofromTag(items);
+		if (tagElement.size() == 0)	onGoingBerth.back()->putinnerHTML(items);
+		else
 			{
-				if (tagElement["tagname"] == "/"+onGoingBerth.back()->fetchTagData("tagname"))
+				//cout<<tagElement["tagname"]<<endl;
+				if(tagElement["tagname"][0] == '/')
 				{
-                    head = onGoingBerth.back();
-                    onGoingBerth.pop_back();
-                    head->putParent(onGoingBerth.back());
-                    onGoingBerth.back()->insertChild(head);
-                    if (tagElement["tagname"] == "/script")
-                        scriptrun = false;
-				}
-                else if (!scriptrun){
-                    cout<<tagElement["tagname"]<<endl;
-                    tagElement["Error"] = "True";
-                    while(onGoingBerth.back()->fetchTagData("tagname") != "htmlStartTag " && tagElement["tagname"] != "/"+onGoingBerth.back()->fetchTagData("tagname"))
-                        {
-                            head = onGoingBerth.back();
-                            onGoingBerth.pop_back();
-                            head->putParent(onGoingBerth.back());
-                            onGoingBerth.back()->insertChild(head);
-                        }
-                        if (onGoingBerth.back()->fetchTagData("tagname") != "htmlStartTag")
-                        {
-                            head = onGoingBerth.back();
-                            onGoingBerth.pop_back();
-                            head->putParent(onGoingBerth.back());
-                            onGoingBerth.back()->insertChild(head);
-                        }
-                }
-                else
-                    onGoingBerth.back()->putinnerHTML(items);
+					headTag = onGoingBerth.back();
+					if (tagElement["tagname"] == "/"+(headTag->fetchTagData("tagname")))
+					{
+						onGoingBerth.pop_back();
+						headTag->putParent(onGoingBerth.back());
+						onGoingBerth.back()->insertChild(headTag);
+						if (tagElement["tagname"] == "/script")
+							scriptrun = false;
+					}
+					else if (!scriptrun){
+						tagElement["Error"] = "True";
+						//cout<<tagElement["tagname"]<<endl;
+						for (auto a: onGoingBerth)
+						{
+							if (tagElement["tagname"] == "/"+a->fetchTagData("tagname"))
+							{
+								while(onGoingBerth.back()->fetchTagData("tagname") != "htmlStartTag" && tagElement["tagname"] != "/"+onGoingBerth.back()->fetchTagData("tagname"))
+								{
+									headTag = onGoingBerth.back();
+									//cout<<headTag->fetchTagData("tagname")<<endl;
+									onGoingBerth.pop_back();
+									headTag->putParent(onGoingBerth.back());
+									onGoingBerth.back()->insertChild(headTag);
+								}
+								break;
+							}
+
+						}
+						//cout<<onGoingBerth.front()->fetchTagData("tagname")<<endl;
+						if (onGoingBerth.back()->fetchTagData("tagname") != "htmlStartTag")
+						{
+							headTag = onGoingBerth.back();
+							onGoingBerth.pop_back();
+							headTag->putParent(onGoingBerth.back());
+							onGoingBerth.back()->insertChild(headTag);
+						}
+					}
 			}
-        else{
-            node * nd = new node(tagElement, "", onGoingBerth.back());
-            if(!searchNode(selfClosingTags, tagElement["tagname"]))
-            {
-                if(tagElement["tagname"] == "script")
-                {
-                    scriptrun = true;
-                }
-                onGoingBerth.push_back(nd);
-            }
-            else{
-                if(tagElement["tagname"][0] != '!')
-                {
-                    nd->putParent(onGoingBerth.back());
-                    onGoingBerth.back()->insertChild(nd);
-                }
-            }
-        }
+			else{
+				if (!scriptrun)
+				{
+					node * nd = new node(tagElement, "", onGoingBerth.back());
+					if(!searchNode(selfClosingTags, tagElement["tagname"]))
+					{
+						if(tagElement["tagname"] == "script")
+							scriptrun = true;
+						onGoingBerth.push_back(nd);
+					}
+					else{		
+						nd->putParent(onGoingBerth.back());
+						onGoingBerth.back()->insertChild(nd);
+					}
+				}
+				else onGoingBerth.back()->putinnerHTML(items);
+			}
+		}
 	}
-  }
-  return onGoingBerth;
+	return onGoingBerth.back();
 }
 
-// int main()
-// {
-//     // ifstream f("a.html");
-//     // string myText;
-//     // vector<string> s;
-//     // while (getline (f, myText))
-//     //     s.push_back(myText);
-//     // f.close();
-//     // vector<string> allBlocks = identifyTags(s);
-//     // vector <node *> htmlNode = tagDefiners(allBlocks);
-//     // printTree(htmlNode[0], 0);
-//     attribute a = extractInfofromTag("<svg color=\"{red: yellow}\"/>");
-//     for (auto i: a)
-//         cout<<i.first<<" : "<<i.second<<endl;
-//     return 0;
-// }
