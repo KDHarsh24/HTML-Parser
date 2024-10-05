@@ -75,7 +75,6 @@ vector<node*> searchQuery(node* root, string key, string value)
     return result;
 }
 
-// Utility function to print search results
 int printSearchResults(vector<node*> results)
 {
     if (results.empty())
@@ -89,7 +88,7 @@ int printSearchResults(vector<node*> results)
         {
             cout<<k.first<<" : "<<k.second<<endl;
         }
-        cout <<"HTML text : "<< n->fetchinnerHTML() << endl;
+        cout <<"HTML text : "<< n->fetchinnerHTML() << endl << endl;
     }
     return 1;
 }

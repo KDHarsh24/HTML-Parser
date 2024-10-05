@@ -88,7 +88,6 @@ int main() {
                     {
                         cout<<"No Tag Found"<<endl;
                     }
-                    system("clear");
                 }
                 else if (option2 == 1)
                 {
