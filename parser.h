@@ -1,96 +1,7 @@
 #include <bits/stdc++.h>
 #include <regex>
 using namespace std;
-#define attribute map<string, string> 
 
-class node
-{
-    private:
-        attribute tagData;
-        string innerHTML = "";
-        node * parent;
-    public:
-        vector <node *> childs = {};
-        node(attribute data, string value, node * prev = NULL)
-        {
-            innerHTML = value;
-            prev = parent;
-            tagData = data;
-        };
-        void insertChild(node * nodeElement)
-        {
-            childs.push_back(nodeElement);
-        }
-        string fetchTagData(string attribute_data)
-        {
-            return tagData[attribute_data];
-        }
-        string fetchinnerHTML()
-        {
-            return innerHTML;
-        }
-        node * fetchparent()
-        {
-            return parent;
-        }
-        void putinnerHTML(string data)
-        {
-            innerHTML += data;
-        }
-        void putParent(node * p)
-        {
-            parent = p;
-        }
-        void putTagdata(string a, string b)
-        {
-            tagData[a] = b;
-        }
-};
-
-node * searchInTree(string query, bool attr, node * head)
-{
-    if (attr)
-    {
-        for
-    }
-}
-
-//*Remove printing htmlStartTag, but not needed to do*
-void printTree(node * head, string prefix = "", bool isLast = true) {
-        // Print the current node
-        if (head->fetchTagData("tagname") != "htmlStartTag"){
-            cout << prefix;
-            // Print connectors and node data
-            if (isLast) {
-                cout << "└─"; // This is the last child
-                prefix += "  "; // Adjust the prefix for the next level
-            } else {
-                cout << "├─"; // Intermediate child
-                prefix += "│ "; // Adjust the prefix for the next level
-            }
-            // Print the node's data
-            cout << head->fetchTagData("tagname") << endl;
-        }
-        // Recursively print all child nodes
-        for (size_t i = 0; i < head->childs.size(); ++i) {
-            printTree(head->childs[i], prefix, i == head->childs.size() - 1);
-        }
-    }
-
-string removeComments(const string& html) {
-    /**** Remove comment from a string ****/
-    string result;
-    bool inComment = false;
-    for (size_t i = 0; i < html.size(); ++i) {
-        if (html[i] == '<' && html[i + 1] == '!' && html[i + 2] == '-' && html[i + 3] == '-' && !inComment) inComment = true;
-        else if (html[i] == '-' && html[i + 1] == '-' && html[i + 2] == '>' && inComment) {
-            inComment = false;
-            i += 2;
-        }
-        else if (!inComment) result += html[i]; 
-    }
-    return result;
-}
 
 vector<string> identifyTags(vector<string> htmlCode)
 {
@@ -137,57 +48,7 @@ vector<string> identifyTags(vector<string> htmlCode)
 
     return blockHtml;
 }
-
-string replacewith(string input, string replace_word, string replace_by)
-{
-    /***** A substring replace from a string to another used extractInfoFromTag ******/
-    size_t pos = input.find(replace_word); 
-    while (pos != string::npos) { 
-        input.replace(pos, replace_word.size(), replace_by); 
-        pos = input.find(replace_word, 
-        pos + replace_by.size()); 
-    }
-    return input;
-}
-
-string addspaceonEqual(string sentence)
-{
-    /*** Seperating for tags with =, > !-- intendation ***/
-    sentence = replacewith(sentence, "=", " = ");
-    sentence = replacewith(sentence, ">", " ");
-    sentence = replacewith(sentence, "!--", "!-- ");
-    return sentence;
-};
-
-string checkTwoQuotes(vector<string> taglist, int n)
-{
-    /*** All Things inside Quotes as one token ***/
-    string valueAnswer = "";
-    int no = 0;
-    for (int i = n; i < taglist.size(); i++)
-    {   
-        string lines = taglist[i];
-        if (no == 2) break;
-        for (int i = 0; i < lines.length(); i++)
-        {
-            if (lines[i] == '"') no++;
-            else
-                valueAnswer += lines[i];
-            if (no == 2)
-                break;
-        }
-    }
-    return valueAnswer;
-}
-
-void leftTrim(string &s) 
-{
-    /*** Space removal from leftside ***/
-    s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char ch) {
-        return !std::isspace(ch);
-    }));
-}
-
+ 
 vector<string> getIntoList(string line)
 {
     /*** Inside tag Divide everything into different elements/tokens ***/
@@ -301,7 +162,7 @@ node * htmlParser(vector<string> allBlock)
 							scriptrun = false;
 					}
 					else if (!scriptrun){
-						tagElement["Error"] = "True";
+                        onGoingBerth.back()->putTagdata("Error", "True");
 						//cout<<tagElement["tagname"]<<endl;
 						for (auto a: onGoingBerth)
 						{
@@ -350,4 +211,3 @@ node * htmlParser(vector<string> allBlock)
 	}
 	return onGoingBerth.back();
 }
-

@@ -1,765 +1,460 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html xml:lang="en" lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-  <title>HKD24</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  
-  <link rel="icon" href="assets/img/mylogo1.jpg">
-
-  
-  <link rel="stylesheet" href="assets/vendor/aos/aos.css">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bad Script">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Satisfy">
-  
-  <link href="assets/css/style.css" rel="stylesheet">
-
-  
-  <style>
-    .resume .resume-title {
-      font-size: 26px;
-      font-weight: 700;
-      margin-top: 20px;
-      margin-bottom: 20px;
-      color: #45505b;
-    }
-    
-    .resume .resume-item {
-      padding: 0 0 20px 20px;
-      margin-top: -2px;
-      border-left: 2px solid #0563bb;
-      position: relative;
-    }
-    
-    .resume .resume-item h4 {
-      line-height: 18px;
-      font-size: 18px;
-      font-weight: 600;
-      text-transform: uppercase;
-      font-family: "Poppins", sans-serif;
-      color: #0563bb;
-      margin-bottom: 10px;
-    }
-    
-    .resume .resume-item h5 {
-      font-size: 16px;
-      background: #f7f8f9;
-      padding: 5px 15px;
-      display: inline-block;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    
-    .resume .resume-item ul {
-      padding-left: 20px;
-    }
-    
-    .resume .resume-item ul li {
-      padding-bottom: 10px;
-    }
-    
-    .resume .resume-item:last-child {
-      padding-bottom: 0;
-    }
-    
-    .resume .resume-item::before {
-      content: "";
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      border-radius: 50px;
-      left: -9px;
-      top: 0;
-      background: #fff;
-      border: 2px solid #0563bb;
-    }
-    .get_btn:hover{
-      color: #ffffff;
-    }
-    
-    .learn_btn{
-      background: #333333;
-      color: #ffffff;
-      padding: 14px 20px;
-      border-radius: 100px;
-      overflow: hidden;
-    }
-    .learn_btn:hover{
-      color: #ffffff;
-    }
-    
-    .sim-btn{
-      background: #333333;
-      color: #ffffff;
-      padding: 14px 20px;
-      border-radius: 100px;
-      overflow: hidden;
-      border: none;
-    }
-    
-    .sim-btn:hover{
-      color: #ffffff;
-    }
-    
-    .hvr-bounce-to-top{
-      display: inline-block;
-      vertical-align: middle;
-      -webkit-transform: perspective(1px) translateZ(0);
-      transform: perspective(1px) translateZ(0);
-      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-      position: relative;
-      -webkit-transition-property: color;
-      transition-property: color;
-      -webkit-transition-duration: 0.5s;
-      transition-duration: 0.5s;
-    }
-    .hvr-bounce-to-top::before {
-        content: "";
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: #2098D1;
-        -webkit-transform: scaleY(0);
-        transform: scaleY(0);
-        -webkit-transform-origin: 50% 100%;
-        transform-origin: 50% 100%;
-        -webkit-transition-property: transform;
-        transition-property: transform;
-        -webkit-transition-duration: 0.5s;
-        transition-duration: 0.5s;
-        -webkit-transition-timing-function: ease-out;
-        transition-timing-function: ease-out;
-    }
-    .hvr-bounce-to-top:hover::before, .hvr-bounce-to-top:focus::before, .hvr-bounce-to-top:active::before {
-        -webkit-transform: scaleY(1);
-        transform: scaleY(1);
-        -webkit-transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
-        transition-timing-function: cubic-bezier(0.52, 1.64, 0.37, 0.66);
-    }
-    section {
-    padding: 60px 0;
-    overflow: hidden;
-    }
-
-    .section-title {
-      text-align: center;
-      padding-bottom: 30px;
-    }
-
-    .section-title h2 {
-      font-size: 32px;
-      font-weight: bold;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-      padding-bottom: 20px;
-      position: relative;
-      color: #45505b;
-    }
-
-    .section-title h2::before {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 120px;
-      height: 1px;
-      background: #ddd;
-      bottom: 1px;
-      left: calc(50% - 60px);
-    }
-
-    .section-title h2::after {
-      content: "";
-      position: absolute;
-      display: block;
-      width: 40px;
-      height: 3px;
-      background: #0563bb;
-      bottom: 0;
-      left: calc(50% - 20px);
-    }
-
-    .section-title p {
-      margin-bottom: 0;
-    }
-    .skills .progress {
-      height: 60px;
-      display: block;
-      background: none;
-      border-radius: 0;
-    }
-
-    .skills .progress .skill {
-      padding: 10px 0;
-      margin: 0;
-      text-transform: uppercase;
-      display: block;
-      font-weight: 600;
-      font-family: "Poppins", sans-serif;
-      color: #45505b;
-    }
-
-    .skills .progress .skill .val {
-      float: right;
-      font-style: normal;
-    }
-
-    .skills .progress-bar-wrap {
-      background: #f2f3f5;
-    }
-
-    .skills .progress-bar {
-      width: 1px;
-      height: 10px;
-      transition: 0.9s;
-      background-color: #0563bb;
-    }
-    ::-webkit-scrollbar {
-      width: 5px;
-    }
-    /* Track */
-    ::-webkit-scrollbar-track {
-      background-color: none;
-      width: 0px;
-    }
-     
-    /* Handle */
-    ::-webkit-scrollbar-thumb {
-      background: #0078ff; 
-      border-radius: 10px;
-    }
-    #myVideo {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 100%;
-    }
-    [data-aos] {
-      opacity: 1 !important;
-      transform: translate(0) scale(1) !important;
-  }
-  .service-box, .work-box{
-    height: 90%;
-    
-  }
-  .card-blog{
-    height: 100%;
-  }
-    #particles-js{ position:absolute; left: 0px;top: 1px;width: 100%; height: 100%; background-color: none;  background-repeat: no-repeat; background-size: cover; background-position: 50% 50%; }
-  </style>
+<title>XNXX 2024 XVIDEOS Porno Sex HD Premium @ FOXNXX.COM</title>
+<meta name="Keywords" content="fuxnxx,foxnxx,fux,xnxx,porn xxx,xxx hd,tube,free sex videos,mobile porn,xvideos">
+<meta name="Description" content="FOXNXX.COM is The World’s Leading XNXX 2024 XVIDEOS Porno Sex HD Free Premium XVIDEOS, Watch Full Length HQ Movies Porn From TOP Premium Porno Sites for Free @ FOXNXX.COM">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta http-equiv="cache-control" content="max-age=300" />
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="rating" content="RTA-5042-1996-1400-1577-RTA" />
+<meta name="robots" content="index, follow"> 
+<meta name="googlebot" content="index, follow" />
+<link rel="canonical" href="https://foxnxx.com/"/>
+<link ref="preload" href="//foxnxx.com/favicon.png?v=1" as="image">
+<link rel="icon" type="image/png" href="//foxnxx.com/favicon.png?v=1" />
+<link href="/scripts/css/style.css?v=1" rel="stylesheet">
+<script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
 </head>
-
 <body>
-  
-  <header id="header" class="fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <h1 class="logo"><a href="index.html" style="font-family: 'Bad Script'; font-size:27px">HarshKumarDas</a></h1>
-      
-      
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="Resume.html">Resume</a></li>
-          <li><a class="nav-link scrollto" href="#services">PortFolio</a></li>
-          <li><a class="nav-link scrollto " href="#work">WorkSpace</a></li>
-          <li><a class="nav-link scrollto " href="#blog">Mystery-History</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav>
-    </div>
-  </header>
-
-  
-  <div id="hero" class="hero route bg-image" style="background-image: url(assets/img/bg1.jpg)">
-    <div class="overlay-itro"></div>
-    
-    <div class="hero-content display-table">
-      <div class="table-cell">
-        <div class="container">
-          <div id="particles-js"></div>
-          
-          <h1 class="hero-title mb-4" style="font-family:Satisfy">Hello Harsh Here</h1>
-          <p class="hero-subtitle">Loves to <span class="typed" data-typed-items="Code, Sport, Explore, Be Together"></span></p>
-          
-        </div>
-      </div>
-    </div>
+<div class="thumbnail"> 
+ <div id="navbar">
+  <a href="/">FOXNXX.COM</a>
+</div>  
+<div class="search-form">
+ <form enctype="multipart/form-data" method="POST">
+  <input type="text" class="input-field" name="keywords" value="" placeholder="Search..." minlength="3" maxlength="200" style="text-transform: capitalize;" required/>
+  <input name="searchsbt" type="submit" value="Search" />
+ </form>
+</div>
+<div class="studios">
+ <div class="std">
+  <a href="https://foxprn.com/tags/brazzers.html" title="Brazzers" target="_blank">Brazzers</a>
+ </div>
+ <div class="std">
+  <a href="/tags/xnxx.html" title="XNXX">XNXX</a>
+ </div>
+ <div class="std">
+  <a href="https://theporndude.com" title="ThePornDude" target="_blank" rel="nofollow">ThePornDude</a>
+ </div>
+ <div class="std">
+  <a href="/tags/sislovesme.html" title="SisLovesMe">SisLovesMe</a>
+ </div>
+ <div class="std">
+  <a href="https://pornegy.com" title="PornEgy.Com" target="_blank">PornEgy</a>
+ </div>
+</div>  <div class="toptitle" style="margin:0px 5px 5px 5px;text-align:center;"><h1>XNXX 2024 XVIDEOS Porno Sex HD Premium</h1></div>
+<div style="height:100px;max-width:300px;margin:7px auto;overflow: hidden;"><ins class="eas6a97888e" data-zoneid="5120574"></ins></div><div class="thumb"> 
+ <a href="/xxx/analonly-chloe-and-lunas-anal-party-29955.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/analonly-chloe-and-lunas-anal-party.jpg?v=4" alt="AnalOnly-Chloe and Luna's Anal Party-FOXNXX.COM"/>
+    <div class="timer">01:05:54</div>
   </div>
+  <div class="titlethumb" title="AnalOnly-Chloe and Luna's Anal Party-FOXNXX.COM">AnalOnly-Chloe and Luna's Anal Party</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/willtilexxx-luna-lark-on-the-go-29954.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/willtilexxx-luna-lark-on-the-go.jpg?v=4" alt="WillTileXXX-Luna Lark On The Go-FOXNXX.COM"/>
+    <div class="timer">18:46</div>
+  </div>
+  <div class="titlethumb" title="WillTileXXX-Luna Lark On The Go-FOXNXX.COM">WillTileXXX-Luna Lark On The Go</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/girlgirlxxx-desiree-dulce-finds-love-again-in-sage-hunter-29953.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/girlgirlxxx-desiree-dulce-finds-love-again-in-sage-hunter.jpg?v=4" alt="GirlGirlXXX-Desiree Dulce Finds Love Again In Sage Hunter-FOXNXX.COM"/>
+    <div class="timer">31:12</div>
+  </div>
+  <div class="titlethumb" title="GirlGirlXXX-Desiree Dulce Finds Love Again In Sage Hunter-FOXNXX.COM">GirlGirlXXX-Desiree Dulce Finds Love Again In Sage Hunter</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/pornworld-rich-bitch-merida-sat-enjoys-a-bit-of-rough-during-interracial-threesome-29952.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/pornworld-rich-bitch-merida-sat-enjoys-a-bit-of-rough-during-interracial-threesome.jpg?v=4" alt="PornWorld-Rich Bitch Merida Sat Enjoys A Bit Of Rough During Interracial Threesome-FOXNXX.COM"/>
+    <div class="timer">49:15</div>
+  </div>
+  <div class="titlethumb" title="PornWorld-Rich Bitch Merida Sat Enjoys A Bit Of Rough During Interracial Threesome-FOXNXX.COM">PornWorld-Rich Bitch Merida Sat Enjoys A Bit Of Rough During Interracial Threesome</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/manyvids-kay-lovely-blowjob-perfection-4kporn-29951.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/manyvids-kay-lovely-blowjob-perfection-4kporn.jpg?v=4" alt="ManyVids-Kay Lovely Blowjob Perfection, 4KPorn-FOXNXX.COM"/>
+    <div class="timer">30:48</div>
+  </div>
+  <div class="titlethumb" title="ManyVids-Kay Lovely Blowjob Perfection, 4KPorn-FOXNXX.COM">ManyVids-Kay Lovely Blowjob Perfection, 4KPorn</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/povd-angel-gostosa-tommy-gunn-in-orgasmic-release-29950.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/povd-angel-gostosa-tommy-gunn-in-orgasmic-release.jpg?v=4" alt="POVD-Angel Gostosa, Tommy Gunn in Orgasmic Release-FOXNXX.COM"/>
+    <div class="timer">27:19</div>
+  </div>
+  <div class="titlethumb" title="POVD-Angel Gostosa, Tommy Gunn in Orgasmic Release-FOXNXX.COM">POVD-Angel Gostosa, Tommy Gunn in Orgasmic Release</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/onlytarts-either-i-keep-fucking-with-your-head-or-you-fuck-me-29949.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/onlytarts-either-i-keep-fucking-with-your-head-or-you-fuck-me.jpg?v=4" alt="OnlyTarts-Either I Keep Fucking With Your Head, Or You Fuck Me-FOXNXX.COM"/>
+    <div class="timer">40:48</div>
+  </div>
+  <div class="titlethumb" title="OnlyTarts-Either I Keep Fucking With Your Head, Or You Fuck Me-FOXNXX.COM">OnlyTarts-Either I Keep Fucking With Your Head, Or You Fuck Me</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/thiccvision-tony-tapout-worships-stella-daniels-titties-29948.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/thiccvision-tony-tapout-worships-stella-daniels-titties.jpg?v=4" alt="ThiccVision-Tony Tapout Worships Stella Daniels Titties-FOXNXX.COM"/>
+    <div class="timer">13:17</div>
+  </div>
+  <div class="titlethumb" title="ThiccVision-Tony Tapout Worships Stella Daniels Titties-FOXNXX.COM">ThiccVision-Tony Tapout Worships Stella Daniels Titties</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/mydadshotgirlfriend-blonde-cutie-rachael-cavalli-sits-on-her-boyfriends-sons-hard-cock-29947.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/mydadshotgirlfriend-blonde-cutie-rachael-cavalli-sits-on-her-boyfriends-sons-hard-cock.jpg?v=4" alt="MyDadsHotGirlfriend-Blonde Cutie Rachael Cavalli Sits on Her Boyfriend's Son's Hard Cock-FOXNXX.COM"/>
+    <div class="timer">34:08</div>
+  </div>
+  <div class="titlethumb" title="MyDadsHotGirlfriend-Blonde Cutie Rachael Cavalli Sits on Her Boyfriend's Son's Hard Cock-FOXNXX.COM">MyDadsHotGirlfriend-Blonde Cutie Rachael Cavalli Sits on Her Boyfriend's Son's Hard Cock</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/teamskeet-director-fucks-expelled-from-church-slut-29946.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/teamskeet-director-fucks-expelled-from-church-slut.jpg?v=4" alt="TeamSkeet-Director Fucks Expelled-From-Church Slut!-FOXNXX.COM"/>
+    <div class="timer">40:06</div>
+  </div>
+  <div class="titlethumb" title="TeamSkeet-Director Fucks Expelled-From-Church Slut!-FOXNXX.COM">TeamSkeet-Director Fucks Expelled-From-Church Slut!</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/kink-gal-and-the-machines-29945.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/kink-gal-and-the-machines.jpg?v=4" alt="Kink-Gal and the Machines-FOXNXX.COM"/>
+    <div class="timer">47:12</div>
+  </div>
+  <div class="titlethumb" title="Kink-Gal and the Machines-FOXNXX.COM">Kink-Gal and the Machines</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/filthymassage-oil-massaging-this-busty-blonde-milf-29944.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/filthymassage-oil-massaging-this-busty-blonde-milf.jpg?v=4" alt="FilthyMassage-Oil Massaging This Busty Blonde MILF-FOXNXX.COM"/>
+    <div class="timer">01:01:31</div>
+  </div>
+  <div class="titlethumb" title="FilthyMassage-Oil Massaging This Busty Blonde MILF-FOXNXX.COM">FilthyMassage-Oil Massaging This Busty Blonde MILF</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/myfamilypies-stepsis-owns-me-29943.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/myfamilypies-stepsis-owns-me.jpg?v=4" alt="MyFamilyPies-Stepsis Owns Me-FOXNXX.COM"/>
+    <div class="timer">30:24</div>
+  </div>
+  <div class="titlethumb" title="MyFamilyPies-Stepsis Owns Me-FOXNXX.COM">MyFamilyPies-Stepsis Owns Me</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/tushyraw-anal-crazy-nickey-huntsman-in-tushy-raw-first-appearance-29942.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/tushyraw-anal-crazy-nickey-huntsman-in-tushy-raw-first-appearance.jpg?v=4" alt="TUSHYRAW-Anal Crazy Nickey Huntsman In Tushy Raw First Appearance-FOXNXX.COM"/>
+    <div class="timer">31:31</div>
+  </div>
+  <div class="titlethumb" title="TUSHYRAW-Anal Crazy Nickey Huntsman In Tushy Raw First Appearance-FOXNXX.COM">TUSHYRAW-Anal Crazy Nickey Huntsman In Tushy Raw First Appearance</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/pornworld-rampant-realtor-brittany-bardot-breaks-out-huge-sex-toys-for-busty-babe-jennifer-mendez-29941.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/pornworld-rampant-realtor-brittany-bardot-breaks-out-huge-sex-toys-for-busty-babe-jennifer-mendez.jpg?v=4" alt="PornWorld-Rampant Realtor Brittany Bardot Breaks Out Huge Sex Toys For Busty Babe Jennifer Mendez-FOXNXX.COM"/>
+    <div class="timer">42:03</div>
+  </div>
+  <div class="titlethumb" title="PornWorld-Rampant Realtor Brittany Bardot Breaks Out Huge Sex Toys For Busty Babe Jennifer Mendez-FOXNXX.COM">PornWorld-Rampant Realtor Brittany Bardot Breaks Out Huge Sex Toys For Busty Babe Jennifer Mendez</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/rawwhitemeat-huge-tits-ebony-bounces-on-white-dick-29940.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/rawwhitemeat-huge-tits-ebony-bounces-on-white-dick.jpg?v=4" alt="RawWhiteMeat-Huge Tits Ebony Bounces On White Dick-FOXNXX.COM"/>
+    <div class="timer">31:20</div>
+  </div>
+  <div class="titlethumb" title="RawWhiteMeat-Huge Tits Ebony Bounces On White Dick-FOXNXX.COM">RawWhiteMeat-Huge Tits Ebony Bounces On White Dick</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/lifeselector-sata-jones-you-need-more-than-this-honey-29939.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/lifeselector-sata-jones-you-need-more-than-this-honey.jpg?v=4" alt="LifeSelector-Sata Jones You Need More Than This, Honey?-FOXNXX.COM"/>
+    <div class="timer">38:36</div>
+  </div>
+  <div class="titlethumb" title="LifeSelector-Sata Jones You Need More Than This, Honey?-FOXNXX.COM">LifeSelector-Sata Jones You Need More Than This, Honey?</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/pornfidelity-get-me-pregnant-kat-marie-29938.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/pornfidelity-get-me-pregnant-kat-marie.jpg?v=4" alt="PornFidelity-Get Me Pregnant! Kat Marie-FOXNXX.COM"/>
+    <div class="timer">48:59</div>
+  </div>
+  <div class="titlethumb" title="PornFidelity-Get Me Pregnant! Kat Marie-FOXNXX.COM">PornFidelity-Get Me Pregnant! Kat Marie</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/sisswap-swapception-part-2-swap-harder-29937.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/sisswap-swapception-part-2-swap-harder.jpg?v=4" alt="SisSwap-Swapception Part 2: Swap Harder-FOXNXX.COM"/>
+    <div class="timer">49:58</div>
+  </div>
+  <div class="titlethumb" title="SisSwap-Swapception Part 2: Swap Harder-FOXNXX.COM">SisSwap-Swapception Part 2: Swap Harder</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/dadcrush-teamskeet-newcomer-sends-her-stepdad-nudes-29936.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/dadcrush-teamskeet-newcomer-sends-her-stepdad-nudes.jpg?v=4" alt="DadCrush-TeamSkeet Newcomer Sends Her Stepdad Nudes-FOXNXX.COM"/>
+    <div class="timer">01:05:39</div>
+  </div>
+  <div class="titlethumb" title="DadCrush-TeamSkeet Newcomer Sends Her Stepdad Nudes-FOXNXX.COM">DadCrush-TeamSkeet Newcomer Sends Her Stepdad Nudes</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/julesjordan-big-booty-legend-alexis-texas-conquers-hollywood-cashs-bbc-29935.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/julesjordan-big-booty-legend-alexis-texas-conquers-hollywood-cashs-bbc.jpg?v=4" alt="JulesJordan-Big Booty Legend Alexis Texas Conquers Hollywood Cash's BBC-FOXNXX.COM"/>
+    <div class="timer">34:41</div>
+  </div>
+  <div class="titlethumb" title="JulesJordan-Big Booty Legend Alexis Texas Conquers Hollywood Cash's BBC-FOXNXX.COM">JulesJordan-Big Booty Legend Alexis Texas Conquers Hollywood Cash's BBC</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/bangrealteens-gorgeous-redhead-stella-luxx-gets-it-right-up-her-butthole-29934.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/bangrealteens-gorgeous-redhead-stella-luxx-gets-it-right-up-her-butthole.jpg?v=4" alt="BangRealTeens-Gorgeous Redhead Stella Luxx Gets It Right Up Her Butthole-FOXNXX.COM"/>
+    <div class="timer">55:55</div>
+  </div>
+  <div class="titlethumb" title="BangRealTeens-Gorgeous Redhead Stella Luxx Gets It Right Up Her Butthole-FOXNXX.COM">BangRealTeens-Gorgeous Redhead Stella Luxx Gets It Right Up Her Butthole</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/littlecaprice-povdreams-the-perfect-pov-threesome-29933.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/littlecaprice-povdreams-the-perfect-pov-threesome.jpg?v=4" alt="LittleCaprice-POVdreams The perfect POV Threesome-FOXNXX.COM"/>
+    <div class="timer">16:17</div>
+  </div>
+  <div class="titlethumb" title="LittleCaprice-POVdreams The perfect POV Threesome-FOXNXX.COM">LittleCaprice-POVdreams The perfect POV Threesome</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/dorcelclub-between-two-meetings-4kporn-29932.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/dorcelclub-between-two-meetings-4kporn.jpg?v=4" alt="DorcelClub-Between Two Meetings, 4KPorn-FOXNXX.COM"/>
+    <div class="timer">32:31</div>
+  </div>
+  <div class="titlethumb" title="DorcelClub-Between Two Meetings, 4KPorn-FOXNXX.COM">DorcelClub-Between Two Meetings, 4KPorn</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/manyvids-a-day-with-veronica-leal-sightseeing-anal-fucking-creampies-29931.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/manyvids-a-day-with-veronica-leal-sightseeing-anal-fucking-creampies.jpg?v=4" alt="ManyVids-A Day with Veronica Leal: Sightseeing, Anal Fucking, Creampies-FOXNXX.COM"/>
+    <div class="timer">01:10:41</div>
+  </div>
+  <div class="titlethumb" title="ManyVids-A Day with Veronica Leal: Sightseeing, Anal Fucking, Creampies-FOXNXX.COM">ManyVids-A Day with Veronica Leal: Sightseeing, Anal Fucking, Creampies</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/manyvids-remy-lacroix-big-butt-taking-bbc-part-3-with-flight-life-29930.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/manyvids-remy-lacroix-big-butt-taking-bbc-part-3-with-flight-life.jpg?v=4" alt="ManyVids-Remy Lacroix Big Butt Taking BBC Part 3 With Flight Life-FOXNXX.COM"/>
+    <div class="timer">33:05</div>
+  </div>
+  <div class="titlethumb" title="ManyVids-Remy Lacroix Big Butt Taking BBC Part 3 With Flight Life-FOXNXX.COM">ManyVids-Remy Lacroix Big Butt Taking BBC Part 3 With Flight Life</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/netvideogirls-bright-eyed-latina-goes-for-it-29929.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/netvideogirls-bright-eyed-latina-goes-for-it.jpg?v=4" alt="NetVideoGirls-Bright Eyed Latina Goes For It-FOXNXX.COM"/>
+    <div class="timer">01:10:05</div>
+  </div>
+  <div class="titlethumb" title="NetVideoGirls-Bright Eyed Latina Goes For It-FOXNXX.COM">NetVideoGirls-Bright Eyed Latina Goes For It</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/manyvids-eden-ivy-he-wanted-me-to-harvest-his-nut-at-the-spa-29928.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/manyvids-eden-ivy-he-wanted-me-to-harvest-his-nut-at-the-spa.jpg?v=4" alt="ManyVids-Eden Ivy He Wanted Me To Harvest His Nut At The Spa-FOXNXX.COM"/>
+    <div class="timer">34:29</div>
+  </div>
+  <div class="titlethumb" title="ManyVids-Eden Ivy He Wanted Me To Harvest His Nut At The Spa-FOXNXX.COM">ManyVids-Eden Ivy He Wanted Me To Harvest His Nut At The Spa</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/lifeselector-octavia-red-starting-with-a-view-29927.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/lifeselector-octavia-red-starting-with-a-view.jpg?v=4" alt="LifeSelector-Octavia Red Starting With A View-FOXNXX.COM"/>
+    <div class="timer">01:02:21</div>
+  </div>
+  <div class="titlethumb" title="LifeSelector-Octavia Red Starting With A View-FOXNXX.COM">LifeSelector-Octavia Red Starting With A View</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/teenmegaworld-play-me-and-not-your-phone-megan-murkovski-29926.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/teenmegaworld-play-me-and-not-your-phone-megan-murkovski.jpg?v=4" alt="TeenMegaWorld-Play Me and Not Your Phone, Megan Murkovski-FOXNXX.COM"/>
+    <div class="timer">29:55</div>
+  </div>
+  <div class="titlethumb" title="TeenMegaWorld-Play Me and Not Your Phone, Megan Murkovski-FOXNXX.COM">TeenMegaWorld-Play Me and Not Your Phone, Megan Murkovski</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/sweetheartvideo-student-teacher-relations-2-scene-3-lesson-learned-29925.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/sweetheartvideo-student-teacher-relations-2-scene-3-lesson-learned.jpg?v=4" alt="SweetheartVideo-Student Teacher Relations 2 Scene 3 Lesson Learned-FOXNXX.COM"/>
+    <div class="timer">29:04</div>
+  </div>
+  <div class="titlethumb" title="SweetheartVideo-Student Teacher Relations 2 Scene 3 Lesson Learned-FOXNXX.COM">SweetheartVideo-Student Teacher Relations 2 Scene 3 Lesson Learned</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/nadenasty-insane-girls-night-reverse-gangbang-with-6-super-horny-sluts-29924.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/nadenasty-insane-girls-night-reverse-gangbang-with-6-super-horny-sluts.jpg?v=4" alt="NadeNasty-Insane Girls Night Reverse Gangbang with 6 Super Horny Sluts-FOXNXX.COM"/>
+    <div class="timer">01:09:43</div>
+  </div>
+  <div class="titlethumb" title="NadeNasty-Insane Girls Night Reverse Gangbang with 6 Super Horny Sluts-FOXNXX.COM">NadeNasty-Insane Girls Night Reverse Gangbang with 6 Super Horny Sluts</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/private-veronica-leal-stars-in-an-interracial-threesome-with-anal-and-dp-29923.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/private-veronica-leal-stars-in-an-interracial-threesome-with-anal-and-dp.jpg?v=4" alt="Private-Veronica Leal Stars in an Interracial Threesome with Anal and DP-FOXNXX.COM"/>
+    <div class="timer">38:31</div>
+  </div>
+  <div class="titlethumb" title="Private-Veronica Leal Stars in an Interracial Threesome with Anal and DP-FOXNXX.COM">Private-Veronica Leal Stars in an Interracial Threesome with Anal and DP</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/blackedraw-surprise-double-penetration-for-curvy-blonde-subgirl-29922.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/blackedraw-surprise-double-penetration-for-curvy-blonde-subgirl.jpg?v=4" alt="BlackedRaw-Surprise Double Penetration For Curvy Blonde Subgirl-FOXNXX.COM"/>
+    <div class="timer">41:41</div>
+  </div>
+  <div class="titlethumb" title="BlackedRaw-Surprise Double Penetration For Curvy Blonde Subgirl-FOXNXX.COM">BlackedRaw-Surprise Double Penetration For Curvy Blonde Subgirl</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/backroomcastingcouch-marked-by-the-serpent-guaranteed-anal-29921.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/backroomcastingcouch-marked-by-the-serpent-guaranteed-anal.jpg?v=4" alt="BackroomCastingCouch-Marked By The Serpent: Guaranteed Anal-FOXNXX.COM"/>
+    <div class="timer">01:04:50</div>
+  </div>
+  <div class="titlethumb" title="BackroomCastingCouch-Marked By The Serpent: Guaranteed Anal-FOXNXX.COM">BackroomCastingCouch-Marked By The Serpent: Guaranteed Anal</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/manyvids-eden-ivy-hardcore-amateur-interracial-audition-29920.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/manyvids-eden-ivy-hardcore-amateur-interracial-audition.jpg?v=4" alt="ManyVids-Eden Ivy: Hardcore Amateur Interracial Audition-FOXNXX.COM"/>
+    <div class="timer">33:42</div>
+  </div>
+  <div class="titlethumb" title="ManyVids-Eden Ivy: Hardcore Amateur Interracial Audition-FOXNXX.COM">ManyVids-Eden Ivy: Hardcore Amateur Interracial Audition</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/roccosiffredi-she-takes-teaching-seriously-29919.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/roccosiffredi-she-takes-teaching-seriously.jpg?v=4" alt="RoccoSiffredi-She Takes Teaching Seriously-FOXNXX.COM"/>
+    <div class="timer">47:23</div>
+  </div>
+  <div class="titlethumb" title="RoccoSiffredi-She Takes Teaching Seriously-FOXNXX.COM">RoccoSiffredi-She Takes Teaching Seriously</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/thiccvision-chanel-barbie-meets-megadrive-29918.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/thiccvision-chanel-barbie-meets-megadrive.jpg?v=4" alt="ThiccVision-Chanel Barbie Meets Megadrive-FOXNXX.COM"/>
+    <div class="timer">16:31</div>
+  </div>
+  <div class="titlethumb" title="ThiccVision-Chanel Barbie Meets Megadrive-FOXNXX.COM">ThiccVision-Chanel Barbie Meets Megadrive</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/littlecaprice-nasstyx-morning-ritual-nata-gold-29917.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/littlecaprice-nasstyx-morning-ritual-nata-gold.jpg?v=4" alt="LittleCaprice-NasstyX Morning Ritual Nata Gold-FOXNXX.COM"/>
+    <div class="timer">31:29</div>
+  </div>
+  <div class="titlethumb" title="LittleCaprice-NasstyX Morning Ritual Nata Gold-FOXNXX.COM">LittleCaprice-NasstyX Morning Ritual Nata Gold</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/teenmegaworld-beauty-angels-flirting-and-pleasing-29916.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/teenmegaworld-beauty-angels-flirting-and-pleasing.jpg?v=4" alt="TeenMegaWorld-Beauty Angels Flirting and Pleasing-FOXNXX.COM"/>
+    <div class="timer">29:03</div>
+  </div>
+  <div class="titlethumb" title="TeenMegaWorld-Beauty Angels Flirting and Pleasing-FOXNXX.COM">TeenMegaWorld-Beauty Angels Flirting and Pleasing</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/puretaboo-the-betrayal-between-them-dee-williams-29915.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/puretaboo-the-betrayal-between-them-dee-williams.jpg?v=4" alt="PureTaboo-The Betrayal Between Them, Dee Williams-FOXNXX.COM"/>
+    <div class="timer">47:27</div>
+  </div>
+  <div class="titlethumb" title="PureTaboo-The Betrayal Between Them, Dee Williams-FOXNXX.COM">PureTaboo-The Betrayal Between Them, Dee Williams</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/manyvids-foursome-interracial-orgy-fffm-29914.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/manyvids-foursome-interracial-orgy-fffm.jpg?v=4" alt="ManyVids-Foursome Interracial Orgy FFFM-FOXNXX.COM"/>
+    <div class="timer">30:44</div>
+  </div>
+  <div class="titlethumb" title="ManyVids-Foursome Interracial Orgy FFFM-FOXNXX.COM">ManyVids-Foursome Interracial Orgy FFFM</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/littlecaprice-onlyfans-little-caprice-my-first-blowbang-29913.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/littlecaprice-onlyfans-little-caprice-my-first-blowbang.jpg?v=4" alt="LittleCaprice-OnlyFans Little Caprice My First Blowbang-FOXNXX.COM"/>
+    <div class="timer">25:36</div>
+  </div>
+  <div class="titlethumb" title="LittleCaprice-OnlyFans Little Caprice My First Blowbang-FOXNXX.COM">LittleCaprice-OnlyFans Little Caprice My First Blowbang</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/tushyraw-bella-rolland-tries-deep-and-tight-anal-on-tushy-raw-29912.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/tushyraw-bella-rolland-tries-deep-and-tight-anal-on-tushy-raw.jpg?v=4" alt="TUSHYRAW-Bella Rolland Tries Deep and Tight Anal on TUSHY RAW-FOXNXX.COM"/>
+    <div class="timer">32:35</div>
+  </div>
+  <div class="titlethumb" title="TUSHYRAW-Bella Rolland Tries Deep and Tight Anal on TUSHY RAW-FOXNXX.COM">TUSHYRAW-Bella Rolland Tries Deep and Tight Anal on TUSHY RAW</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/pornworld-back-to-school-chapter-2-college-cutie-candee-licious-visits-the-headmaster-for-a-dp-slamming-29911.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/pornworld-back-to-school-chapter-2-college-cutie-candee-licious-visits-the-headmaster-for-a-dp-slamming.jpg?v=4" alt="PornWorld-Back To School Chapter 2: College Cutie Candee Licious Visits The Headmaster For A DP Slamming-FOXNXX.COM"/>
+    <div class="timer">30:51</div>
+  </div>
+  <div class="titlethumb" title="PornWorld-Back To School Chapter 2: College Cutie Candee Licious Visits The Headmaster For A DP Slamming-FOXNXX.COM">PornWorld-Back To School Chapter 2: College Cutie Candee Licious Visits The Headmaster For A DP Slamming</div>
+ </a>
+</div><div class="thumb"> 
+ <a href="/xxx/sensuallove-very-delicious-pussies-29910.html">     
+  <div class="positioncnt">
+    <img width="100%" height="auto" class="lazyload" src="/imgs/lazy-load.jpg" data-src="https://foxnxx.com/avatar/2024/10/sensuallove-very-delicious-pussies.jpg?v=4" alt="SensualLove-Very Delicious Pussies-FOXNXX.COM"/>
+    <div class="timer">49:28</div>
+  </div>
+  <div class="titlethumb" title="SensualLove-Very Delicious Pussies-FOXNXX.COM">SensualLove-Very Delicious Pussies</div>
+ </a>
+</div>  <div class="pager">
+   <ul class='pagination'><li class='active'><a>1</a></li><li><a href='/page/02.html'>2</a></li><li><a href='/page/03.html'>3</a></li><li><a href='/page/04.html'>4</a></li><li><a href='/page/05.html'>5</a></li><li><a href='/page/06.html'>6</a></li><li><a href='/page/07.html'>7</a></li><li class='disabled'><a>.</a></li><li><a href='/page/646.html'>646</a></li></ul>  </div>
+  <div style="height:250px;max-width:300px;margin:7px auto;overflow: hidden;"><ins class="eas6a97888e" data-zoneid="5120588"></ins></div>
+<div style="height:100px;max-width:300px;margin:5px auto;overflow: hidden;"><ins class="eas6a97888e" data-zoneid="5120582"></ins></div><script type="text/javascript" src="/scripts/js/lazyload.js"></script><script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+<script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5f79c753870509001288d63b&product=sop' async='async'></script>
+<footer>
+ <div class="copyright">© 2024 FOXNXX.COM</div>
+ <div class="tpc">
+  <a href="/terms-of-use.html">Terms of Use</a> - 
+  <a href="/privacy-policy.html">Privacy Policy</a> - 
+  <a href="/contact-us.html">Contact Us</a> -
+  <a href="/dmca.html">DMCA</a>
+ </div>
+</footer>
 
-  <main id="main">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9XX9LMFS0P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9XX9LMFS0P');
+</script>
 
-    
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-    <section id="resume" class="about-mf sect-pt4 route" >
-      <div class="title-box text-center">
-        <h3 class="title-a">
-          About ME
-        </h3>
-        <div class="line-mf"></div>
-      </div>
-      <div class="container" >
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="box-shadow-full" style="margin-bottom: -20px;">
-              <div id="About" class="section wb">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="message-box" style="padding-bottom: 10px; font-size:24px">                        
-                                <h2>Hi! Harsh this side</h2>
-                                <p>I am Harsh Kumar Das, a 18 year old from Kolkata by Origin pursuing his B.Tech in CSE from IIIT Manipur. .</p>
-                    <p>      Person love of getting logic and applying every method on practical use , it's the reason for me to choose CSE for algorithm.</p>
-                    <p>I love different cultures, their ways of living, observing people's behaviour and gettin many more experiences...</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="right-box-pro wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
-                                <img src="assets/img/mp1.jpg" alt="" class="img-fluid img-rounded" style="border-radius: 5%; border-bottom: 8px solid black; border-right: 8px solid black;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </section>
-            
-
-
-    
-    <section id="services" class="services-mf pt-5 route">
-      <div class="container" data-aos="fade-up">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="title-box text-center">
-              <h3 class="title-a">
-                PortFolio
-              </h3>
-              <p class="subtitle-a">
-                Trying to keep work where My interests lies
-              </p>
-              <div class="line-mf"></div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="service-box">
-              <div class="service-ico">
-                <span class="ico-circle"><i class="bi bi-laptop"></i></span>
-              </div>
-              <div class="service-content">
-                <h2 class="s-title">Programming</h2>
-                <p class="s-description text-center">
-                I Never Focus on Learning Language rather focus on getting logic behind codes.
-                <br>
-                Can Code in Python, C/C++ Language
-                <br>
-                Web Development can be seen in this
-                <br>
-                For Database SQL I have
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service-box">
-              <div class="service-ico">
-                <span class="ico-circle"><i class="bi bi-bar-chart"></i></span>
-              </div>
-              <div class="service-content">
-                <h2 class="s-title">Data Analytics</h2>
-                <p class="s-description text-center">
-                  My Most Favourite Field in World of logic
-                  <br>
-                  Loves to manipulate data and use them for a particular use
-                  <br>
-                  Currently in a learning Phase.....
-                  <br>
-                  <br>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service-box">
-              <div class="service-ico">
-                <span class="ico-circle"><i class="bi bi-card-checklist"></i></span>
-              </div>
-              <div class="service-content">
-                <h2 class="s-title">Web Designing</h2>
-                <p class="s-description text-center">
-                  With HTML5 and CSS3 I try my best to design website to make them attractive
-                  <br>
-                  Some time even try to get inspiration from other templates & implement them in my own way.
-                </p>
-                
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="service-box">
-              <div class="service-ico">
-                <span class="ico-circle"><i class="bi bi-binoculars"></i></span>
-              </div>
-              <div class="service-content">
-                <h2 class="s-title">Mystery With History</h2>
-                <p class="s-description text-center">
-                  Loves to get the mysterios insidious curiosity about the past historical events.
-                  <br>
-                  Put a Opinion/Perspective over it.
-                </p>
-              </div>
-            </div>
-          </div>
-    </section>
-
-    
-    <div class="section-counter paralax-mf bg-image" style="background-image: url(assets/img/counters-bg.jpg)">
-      <div class="overlay-mf"></div>
-      <div class="container position-relative">
-        <div class="row">
-          <div class="col-sm-3 col-lg-3">
-            <div class="counter-box counter-box pt-4 pt-md-0">
-              <div class="counter-ico">
-                <span class="ico-circle"><i class="bi bi-check"></i></span>
-              </div>
-              <div class="counter-num">
-                <p data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1" class="counter purecounter"></p>
-                <span class="counter-text">MONTHS IN IIIT</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3 col-lg-3">
-            <div class="counter-box pt-4 pt-md-0">
-              <div class="counter-ico">
-                <span class="ico-circle"><i class="bi bi-files"></i></span>
-              </div>
-              <div class="counter-num">
-                <p data-purecounter-start="0" data-purecounter-end="2" data-purecounter-duration="1" class="counter purecounter"></p>
-                <span class="counter-text">PROJECTS</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3 col-lg-3">
-            <div class="counter-box pt-4 pt-md-0">
-              <div class="counter-ico">
-                <span class="ico-circle"><i class="bi bi-building"></i></span>
-              </div>
-              <div class="counter-num">
-                <p data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="counter purecounter"></p>
-                <span class="counter-text">COMPANY WORK</span>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-3 col-lg-3">
-            <div class="counter-box pt-4 pt-md-0">
-              <div class="counter-ico">
-                <span class="ico-circle"><i class="bi bi-award"></i></span>
-              </div>
-              <div class="counter-num">
-                <p data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="counter purecounter"></p>
-                <span class="counter-text">AWARD WON</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    
-    <section id="work" class="portfolio-mf sect-pt4 route">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="title-box text-center">
-              <h3 class="title-a">
-                WorkSpace
-              </h3>
-              <p class="subtitle-a">
-                All Projects and Expereience
-              </p>
-              <div class="line-mf"></div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="work-box">
-              <a href="assets/img/bank.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                <div class="work-img">
-                  <img src="assets/img/bank.jpg" alt="" class="img-fluid">
-                </div>
-              </a>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h2 class="w-title">Bank Credit Analysis</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory">Data Analysis</span> / <span class="w-date"></span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <a href="portfolio-details.html" class="portfolio-lightbox"  data-glightbox="type: external"> <span class="bi bi-plus-circle"></span></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="work-box">
-              <a href="assets/img/work-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox">
-                <div class="work-img" style=" padding:20px; padding-bottom:33%">
-                  <img src="assets/img/coding.gif"  alt="" class="img-fluid" >
-                </div>
-              </a>
-              <div class="work-content">
-                <div class="row">
-                  <div class="col-sm-8" >
-                    <h2 class="w-title" >Work in Progress</h2>
-                    <div class="w-more">
-                      <span class="w-ctegory">Data Analysis</span> / <span class="w-date"></span>
-                    </div>
-                  </div>
-                  <div class="col-sm-4">
-                    <div class="w-like">
-                      <a class="portfolio-lightbox"> <span class="bi bi-plus-circle"></span></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    
-    <div class="testimonials paralax-mf bg-image" style="background-image: url(assets/img/bg2.jpg); height:400px">
-    </div>
-
-    
-    <section id="blog" class="blog-mf sect-pt4 route" style="margin-top: 0px;">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12" >
-            <div class="title-box text-center" style="margin-bottom: 1px;">
-              <h3 class="title-a">
-                Mystery-History
-              </h3>
-              <p class="subtitle-a">
-                Caution!
-                <br>
-                Can Create Controversies
-              </p>
-              <div class="line-mf"></div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-4" style="margin-bottom: 15px;">
-            <div class="card card-blog" style="margin-top: 20px;">
-              <div class="card-img">
-                <a href="blog-single.html" data-gallery="portfolioGallery" class="portfolio-lightbox"><img src="assets/img/indep.jpg" alt="" class="img-fluid"></a>
-              </div>
-              <div class="card-body">
-                <div class="card-category-box">
-                  <div class="card-category">
-                    <h6 class="category">Post World War</h6>
-                  </div>
-                </div>
-                <h3 class="card-title"><a href="blog-single.html"  class="portfolio-lightbox">Indepenedence of Colonies</a></h3>
-                <p class="card-description">
-                  The Real Cause of Freedom of India 
-                  and other Colonies
-                  More than the freedom fighters
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="post-author">
-                  <a href="#" >
-                    <img src="assets/img/Harsh Photo.jpg" alt="" class="avatar rounded-circle">
-                    <span class="author">Harsh Kumar Das</span>
-                  </a>
-                </div>
-                <div class="post-date">
-                  <span class="bi bi-clock"></span> 1945-50
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4" style="margin-bottom: 15px;">
-            <div class="card card-blog" style="margin-top: 20px;">
-              <div class="card-img">
-                <a href="" data-gallery="portfolioGallery" class="portfolio-lightbox"><img src="assets/img/stock.webp" alt="" class="img-fluid"></a>
-              </div>
-              <div class="card-body">
-                <div class="card-category-box">
-                  <div class="card-category">
-                    <h6 class="category">Money</h6>
-                  </div>
-                </div>
-                <h3 class="card-title"><a href="" data-gallery="portfolioGallery" class="portfolio-lightbox">Finance Control</a></h3>
-                <p class="card-description">
-                  How Finance Actually regulates the world and the people with most power controlling it.
-                  <br>
-                </p>
-              </div>
-              <div class="card-footer">
-                <div class="post-author">
-                  <a href="#">
-                    <img src="assets/img/Harsh Photo.jpg" alt="" class="avatar rounded-circle">
-                    <span class="author">Harsh Kumar Das</span>
-                  </a>
-                </div>
-                <div class="post-date">
-                  <span class="bi bi-clock"></span> Going
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    
-    <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route">
-      <div class="container">
-        <video autoplay muted loop id="myVideo" type="video/mp4">
-          <source src="assets/img/rain.mp4">
-        </video>
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="contact-mf">
-              <div id="contact" class="box-shadow-full">
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="title-box-2">
-                      <h5 class="title-left">
-                        Send Message Us
-                      </h5>
-                    </div>
-                    <div>
-                      <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                        <div class="row">
-                          <div class="col-md-12 mb-3">
-                            <div class="form-group">
-                              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                            </div>
-                          </div>
-                          <div class="col-md-12 mb-3">
-                            <div class="form-group">
-                              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                            </div>
-                          </div>
-                          <div class="col-md-12 mb-3">
-                            <div class="form-group">
-                              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-group">
-                              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-                            </div>
-                          </div>
-                          <div class="col-md-12 text-center my-3">
-                            <div class="loading">Loading</div>
-                            <div class="error-message"></div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
-                          </div>
-                          <div class="col-md-12 text-center">
-                            <button type="submit" class="button button-a button-big button-rouded">Send Message</button>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="title-box-2 pt-4 pt-md-0">
-                      <h5 class="title-left">
-                        Get in Touch
-                      </h5>
-                    </div>
-                    <div class="more-info">
-                      <p class="lead">
-                        Fell Free to Contact me or Correct me in any of my Discussion 
-                      </p>
-                      <ul class="list-ico">
-                        <li><iframe style="border:0; width: 100%; height: 240px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.6107606057067!2d93.93622891492639!3d24.842981484062122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37492785030cfa5d%3A0xa9e85369c96babc0!2sIndian%20Institute%20of%20Information%20Technology%20Manipur!5e0!3m2!1sen!2sin!4v1677910416434!5m2!1sen!2sin" frameborder="0" allowfullscreen=""></iframe>
-                          </li>
-                        <li><span class="bi bi-envelope"></span> harshkumardas24@gmail.com</li>
-                      </ul>
-                    </div>
-                    <div class="socials">
-                      <ul>
-                        <li><a href=""><span class="ico-circle"><i class="bi bi-github"></i></span></a></li>
-                        <li><a href="mailto:harshkumardas24@gmail.com" target="_blank"><span class="ico-circle"><i class="bi bi-envelope"></i></span></a></li>
-                        <li><a href="https://www.linkedin.com/in/harsh-kumar-das-062440255" target="_blank"><span class="ico-circle"><i class="bi bi-linkedin"></i></span></a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="copyright-box">
-            <p class="copyright">&copy; Copyright <strong>HarshKumarDas</strong>. All Rights Reserved</p>
-            <div class="credits">
-              
-              Innovated from <a href="https://bootstrapmade.com/">BootstrapMade</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  
-  <script src="assets/js/particles.min.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-
-  
-  <script src="assets/js/main.js"></script>
-  <script>
-    particlesJS("particles-js", {"particles":{"number":
-    {"value":80,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},},"opacity":{"value":0.2,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.2,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"grab"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":0.4}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
-  </script>
-</body>
-
+   ym(97672144, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/97672144" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+</div>
+<script>lazyload();</script>
+<script type="text/javascript" src="//cdn.tsyndicate.com/sdk/v1/p.js" data-ts-spot="2e356eff594842e48ae09ab96215918e" data-ts-session-duration="300" data-ts-count="5" data-ts-delay="15" data-ts-mode="selective" async defer></script>
+<script src="//cdn.tsyndicate.com/sdk/v1/inpage.push.js"></script>
+<script> TsInPagePush({ spot: "4e7a4bc82e2a489b902b6eb55bdfa578", cookieExpires: 0, verticalPosition: "top",}); TsInPagePush({ spot: "20256557429a4a748b90efad511c273a", cookieExpires: 0, verticalPosition: "bottom",});</script></body>
 </html>

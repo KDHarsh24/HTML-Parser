@@ -4,6 +4,8 @@
     "files.associations": {
         "*.html": "html",
         "*.css": "css",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "iostream": "cpp",
+        "fstream": "cpp"
     }
 }

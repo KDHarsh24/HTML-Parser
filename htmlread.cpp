@@ -1,7 +1,10 @@
 #include <bits/stdc++.h>
 #include <curl/curl.h>
-#include "parser.cpp"
-#include <ncurses.h>
+#define attribute map<string, string> 
+#include "tree.h"
+#include "punctuate.h"
+#include "parser.h"
+#include "gui.h"
 using namespace std;
 
 //Inbuilt writefunction for web extraction on file writing
@@ -38,74 +41,13 @@ void readfromWeb(const char * url)
 	}
 }
 
-//DialogueBox Maker
-int selectDialogueBox(vector<string> options)
-{
-    // Initialize ncurses
-    initscr();
-    curs_set(0);
-    noecho();
-    keypad(stdscr, TRUE);
-
-    // Print the selection prompt to the console
-    refresh();
-
-    // Create a window for the options
-    WINDOW *win = newwin(options.size() + 2, 30, 2, 2);
-    box(win, 0, 0);
-
-    // Print the options
-    for (int i = 0; i < options.size(); i++) {
-        mvwprintw(win, i + 1, 2, "%s", options[i].c_str());
-    }
-
-    // Create a cursor for selection
-    int cursor = 0;
-    wrefresh(win);
-    int c;
-    do {
-        // Clear the previous selection
-        for (int i = 0; i < options.size(); i++) {
-            mvwprintw(win, i + 1, 1, " ");
-            mvwprintw(win, i + 1, 2, "%s", options[i].c_str());
-        }
-
-        // Highlight the selected option
-        mvwprintw(win, cursor + 1, 1, ">");
-        mvwprintw(win, cursor + 1, 2, "%s", options[cursor].c_str());
-
-        // Refresh the window
-        wrefresh(win);
-
-        // Handle arrow key presses
-        c = getch();
-        switch (c) {
-            case KEY_UP:
-                if (cursor > 0) {
-                    cursor--;
-                }
-                break;
-            case KEY_DOWN:
-                if (cursor < options.size() - 1) {
-                    cursor++;
-                }
-                break;
-        }
-    } while (c != '\n');
-
-    // Get the selected option
-    string selected_option = options[cursor];
-
-    // Clean up
-    delwin(win);
-    endwin();
-
-    // Print the selected option
-    return cursor;
-}
-
 int main() {
     char website [1000];
+    clear();
+    int termWidth = getTerminalWidth(); // Get the current terminal width
+    cout << string(termWidth, '*') << endl;
+    printFullWidth("WebTree");
+    cout << string(termWidth, '*') << endl<<endl;
 	cout<<"Enter Your Webpage url : ";
 	cin>>website;
 	readfromWeb(website);
@@ -117,33 +59,83 @@ int main() {
 	readFile.close();
 	vector<string> allBlocks = identifyTags(htmlString);
 	node * htmlTag = htmlParser(allBlocks);
+    getch();
 	char s;
-	printw("Select an option:\n");
+	
 	while(true)
 	{
 		vector <string> options = {"Search Data in the website", "Print HTML tree", "Check Errors", "Exit"};
 		int option = selectDialogueBox(options);
 		if (option == 0)
 		{
-
+            while(true)
+            {
+                char g;
+                vector <string> options2 = {"Search by Tag Details", "Search for content", "Exit"};
+                int option2 = selectDialogueBox(options2);
+                if (option2 == 0)
+                {
+                    string searchKey;
+                    string searchValue;
+                    cout<<"Enter Attribute Key : ";
+                    cin>>searchKey;
+                    cout<<"Enter Attribute value: ";
+                    cin>>searchValue;
+                    cout << "Searching for nodes with tag attribute [" << searchKey << "] = " << searchValue << "..." << endl;
+                    vector<node*> resultById = searchQuery(htmlTag, searchKey, searchValue);
+                    int notfound = printSearchResults(resultById);
+                    if (!notfound)
+                    {
+                        cout<<"No Tag Found"<<endl;
+                    }
+                    system("clear");
+                }
+                else if (option2 == 1)
+                {
+                    string innerHTMLSearch;
+                    cout<<"Enter Content: ";
+                    cin>>innerHTMLSearch;
+                    cout << "\nSearching for nodes with innerHTML containing '" << innerHTMLSearch << "'..." << endl;
+                    vector<node*> resultByHTML = searchQuery(htmlTag, "", innerHTMLSearch);
+                    int notfound = printSearchResults(resultByHTML);
+                    if (!notfound)
+                    {
+                        cout<<"No Content Found"<<endl;
+                    }
+                }
+                else
+                {
+                    refresh();
+                    break;
+                }
+                getch();
+                system("clear");
+            }
 		}
 		else if (option == 1)
 		{
 			printTree(htmlTag);
-			cin>>s;
+			getch();
             system("clear");
 		}
 		else if (option == 2)
 		{
-
+            cout << "\nPrinting Error Tags '"<<endl;
+            vector<node*> resultByHTML = searchQuery(htmlTag, "Error", "True");
+            int notFound = printSearchResults(resultByHTML);
+            if (!notFound)
+                cout<<"No Error Congrats!!"<<endl;
+            getch();
+            system("clear");
 		}
 		else
 		{
-			refresh();
-            system("clear");
-			cout<<"*******************WebTree************************\n"<<endl;
-			return 0;
+			cout << string(termWidth, '*') << endl;
+            printFullWidth("WebTree");
+            cout << string(termWidth, '*') << endl<<endl;
+			break;
 		}
+        clear();
 	}
     return 0;
 }
